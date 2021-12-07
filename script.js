@@ -2,6 +2,7 @@ var mapURL ="https://www.mapquestapi.com/directions/v2/route";
 var keyMap="cpzCmtyAMRZD5AXjU7kMvgt8ChZ0Whe9";
 var restAPI ="http://proffitz.aws.csi.miamioh.edu/final.php";
 var chartURL="http://open.mapquestapi.com/elevation/v1/chart";
+var llCol = "";
 
 function getDirections() {
 	var from = 	$('#fromAddress').val();
@@ -10,11 +11,6 @@ function getDirections() {
 		url: mapURL + '?key=' + keyMap + '&from=' + from + '&to=' + to,
 		method: "POST"
 	}) .done(function(data) {
-		var ulLng = data.route.boundingBox.ul.lng;
-		var ulLat = data.route.boundingBox.ul.lat;
-		var lrLng = data.route.boundingBox.lr.lng;
-		var lrLat = data.route.boundingBox.lr.lat;
-		
 		$("#tableBody").html("");
 		manLength = data.route.legs[0].maneuvers.length;
 		for (i=0; i < manLength -1; i++) {
@@ -23,12 +19,13 @@ function getDirections() {
 				+ "<td>" + data.route.legs[0].maneuvers[i].time + "</td>" 
 				+ "<td><iframe class='iframes' src='" + data.route.legs[0].maneuvers[i].mapUrl + "'</iframe></td></tr>" 
 			);
+			llCol += data.route.legs[0].maneuvers[i].startPoint.lat + "," + data.route.legs[0].maneuvers[i].startPoint.lng + ",";
 		}
+		llCol += data.route.legs[0].maneuvers[manLength -1].startPoint.lat + "," + data.route.legs[0].maneuvers[manLength -1].startPoint.lng;
 		$("#tableBody").append("<tr><td>" + data.route.legs[0].maneuvers[manLength -1].narrative + "</td>"
 				+ "<td>" + data.route.legs[0].maneuvers[manLength -1].distance + "</td>"
 				+ "<td>" + data.route.legs[0].maneuvers[manLength -1].time + "</td>");
-		var varElevationURL = chartURL + '?key=' + keyMap + '&shapeFormat=raw&width=400&height=300&latLngCollection=' + ulLat + "," +
-		ulLng + "," + lrLat + "," + lrLng;
+		var varElevationURL = chartURL + '?key=' + keyMap + '&shapeFormat=raw&width=400&height=300&latLngCollection=' + llCol;
 		
 		$("#tableBody").append("<tr><td>" + "<img src='" + varElevationURL + "'</td></tr>");
 		
