@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--
+        CSE 383
+        Name: Troy Proffitt
+        Assignment: Final Project
+        Description: 
+-->
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <title> CSE383 Final Project </title>
+      <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+      <link
+         rel="stylesheet"
+         href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+         crossorigin="anonymous"
+         />
+      <script
+         src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+         crossorigin="anonymous"
+         ></script>
+      <script
+         src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+         crossorigin="anonymous"
+         ></script>
+      <script
+         src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+         crossorigin="anonymous"
+       ></script>
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+       <script src="script.js?rev=1"></script>
+  </head>
+  <style>
+  
+	#navbar {
+		background-color: lightblue;
+	}
+	
+    body {
+      background-color: lightblue;
+    }
+    
+    h4 {
+      margin-top: 2%;
+    }   
+    
+    #flex {
+      background-color: orange;
+      padding-left: 2%;
+      padding-top: 2%;
+      padding-bottom: 2%;
+    }
+    
+    #submit {
+      margin-top: 2%;
+    }
+    
+	#directionsHeader {
+		margin-top: 2%;
+	}
+	
+	#directionList {
+		top: 40px; /* Header Height */
+		bottom: 20px; /* Footer Height */
+		width: 95%;
+		margin-left: 2%;	
+		margin-right: 2%;
+		margin-top: 2%;
+		background-color: white;
+	}
+
+	.iframes{
+		height:165px;
+		width:230px;
+	}
+		
+  </style>
+</head>
+<body>  
+  <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="index.html">MapQuest</a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="directions.html">Directions<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="request.html">Request Directions</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <body>
+    <div class="container-fluid" id="flex">
+      <div class="col-sm-4">
+		<form id="form">
+        <h4 class="mx-auto">Where do you wanna go?</h4>
+          <div class="row g-3">  
+           <div class="col-sm-6">
+             <label for="fromAddress" class="form-label">From</label>
+             <input type="text" class="form-control" id="fromAddress" placeholder="From" value="501 e high street oxford ohio 45056">
+           </div>
+           <div class="col-sm-6">
+             <label for="toAddress" class="form-label">To</label>
+             <input type="text" class="form-control" id="toAddress" placeholder="To" value="7847 VOA Park Dr, West Chester Township, OH 45069">
+           </div>
+           <div id="submit"class="col-sm-6">
+             <button type="button" id="submitButton" name="submitButton" onclick="getDirections()">Submit</button>
+           </div>
+          </div>
+          </form>
+      </div>
+    </div> 
+	<div class="row justify-content-center">
+		<div id="directionList" class="box"><h2>Directions<span id="narrative"></span></h2>
+			<table class='table maneuverTable'>
+			<thead><tr><th>Narrative</th><th>Distance(miles)
+			</th><th>Time(sec)</th><th>Thumbnail</th></tr></thead>
+			<tbody id="tableBody">
+			
+			</tbody>
+	</div>
+  </body>
+</html>
