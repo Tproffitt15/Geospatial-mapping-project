@@ -1,0 +1,42 @@
+#navbar {
+	background-color: lightblue;
+}
+
+body {
+  background-color: lightblue;
+}
+
+h4 {
+  margin-top: 2%;
+}   
+
+#flex {
+  background-color: orange;
+  padding-left: 2%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+#submit {
+  margin-top: 2%;
+}
+
+#directionsHeader {
+	margin-top: 2%;
+}
+
+#directionList {
+	top: 40px; /* Header Height */
+	bottom: 20px; /* Footer Height */
+	width: 95%;
+	margin-left: 2%;	
+	margin-right: 2%;
+	margin-top: 2%;
+	background-color: white;
+}
+
+.iframes{
+	height:165px;
+	width:230px;
+}
+	
